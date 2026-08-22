@@ -43,3 +43,10 @@ Crear `overview/` desde `.agents/templates/` al iniciar proyecto. Al inicio y ci
 - `overview/learning.md` cuando surja mejora candidata (propuestas al core)
 
 `overview/history/` conserva sesiones antiguas. Cambios a reglas globales solo ocurren en repositorio oficial con aprobación del propietario.
+
+
+//esto es una prueba
+//esto es una prueba
+//esto es una prueba
+//esto es una prueba
+//esto es una prueba
