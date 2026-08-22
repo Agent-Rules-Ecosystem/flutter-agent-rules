@@ -47,6 +47,3 @@ Crear `overview/` desde `.agents/templates/` al iniciar proyecto. Al inicio y ci
 
 //esto es una prueba
 //esto es una prueba
-//esto es una prueba
-//esto es una prueba
-//esto es una prueba
