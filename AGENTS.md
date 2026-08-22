@@ -45,5 +45,5 @@ Crear `overview/` desde `.agents/templates/` al iniciar proyecto. Al inicio y ci
 `overview/history/` conserva sesiones antiguas. Cambios a reglas globales solo ocurren en repositorio oficial con aprobación del propietario.
 
 
-//esto es una prueba
-//esto es una prueba
+//esto es una prueba3
+//esto es una prueba3
