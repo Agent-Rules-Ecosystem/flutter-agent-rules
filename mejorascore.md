@@ -43,12 +43,12 @@
 
 *Prioridad: Media | Factibilidad: Media-Alta*
 
-* [ ] **Especificación de Manifiesto (`skill.yaml`)**:
-  * Definir un esquema ligero de metadatos para cada skill (`name`, `version`, `author`, `dependencies`, `compatible_rules`).
-* [ ] **Resolución de Dependencias entre Skills**:
-  * Permitir que un skill declare requisitos previos (ejemplo: `flutter-firebase-auth-agent-skill` declare como dependencia a `flutter-bloc-patterns-agent-skill`).
-* [ ] **Instalador Inteligente de Skills**:
-  * Script CLI para clonar e inicializar un skill junto con todas sus dependencias con un solo comando (ej. `./scripts/install_skill.sh <url-del-skill>`).
+* [x] **Especificación de Manifiesto (`skill.yaml`)**:
+  * Esquema ligero de metadatos (`name`, `version`, `description`, `author`, `compatible_rules`, `dependencies`) generado e integrado en las 12 habilidades del ecosistema.
+* [x] **Resolución de Dependencias entre Skills**:
+  * Implementada la declaración y resolución automática de requisitos previos (ejemplo: `flutter-firebase-auth-agent-skill` y `flutter-firebase-odoo-agent-skill` requieren `flutter-bloc-patterns-agent-skill`).
+* [x] **Instalador Inteligente de Skills**:
+  * Desarrollado el script CLI ejecutable (`scripts/install_skill.sh <skill-name-or-url>`) para clonar como submódulo e inicializar una habilidad junto con todas sus dependencias recursivas.
 
 ---
 
