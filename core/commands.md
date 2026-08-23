@@ -38,10 +38,13 @@ Pasos que el agente debe ejecutar:
 6. `session.md` legado: si faltan `Agente:`, `## Reanudar` o `## Cambios` → reportar `session legado` (sin migrar automático).
 7. Auditoría de líneas: listar archivos de código fuente >250L; sugerir IDs `deuda` en `overview/work/deuda_tecnica.md` (prioridades **Alta**, **Media**, **Baja**).
 8. Auditar `overview/learning.md` (Protocolo de 3 Vías — ver `core/learning_protocol.md`): por cada bullet en `## 📌 Propuestas de mejora` evaluar si está ✅ aplicada (promover al `## 📜 Histórico`), ❌ rechazada (viola Filtro Agnóstico → eliminar), ⚠️ en conflicto con regla existente (flag `[conflicto learning: regla X]` en `work.md`) o ⏳ pendiente (conservar). Bullets con etiqueta `- [nombre-skill]` son propuestas para skills: ejecutar `$revlearnskill` en el governing repo cuando aplique.
-9. **Generación de `overview/commands_project.md`**: Verificar si existe. Si no existe, crearlo desde `templates/commands_project.md`. Si existe, actualizarlo:
+9. **Generación (siempre) de `overview/commands_project.md`**: **Regenerar completo en cada `$boot`**, independientemente de si el archivo ya existe. El archivo anterior se sobreescribe. Protocolo:
+   - Escribir encabezado con fecha/hora de actualización.
    - Copiar la tabla de referencia rápida de `core/commands.md` bajo `## 🧠 Comandos del Core`.
-   - Detectar skills instaladas escaneando `.skill/` — para cada subdirectorio que contenga `core/commands.md`, agregar una sección `## 🧩 Comandos: [nombre-skill]` con su tabla de comandos.
-   - El archivo resultante es una **copia de consulta rápida** — nunca la fuente de verdad.
+   - Escanear `.skill/` — para cada subdirectorio que contenga `core/commands.md`, agregar una sección `## 🧩 Comandos: [nombre-skill]` con su tabla de comandos leída en ese momento.
+   - Si una skill fue eliminada de `.skill/`, su sección desaparece del archivo automáticamente.
+   - Si una skill actualizó su `core/commands.md` (agregó, eliminó o editó comandos), la nueva versión queda reflejada sin intervención manual.
+   - El archivo es **copia de consulta rápida** — nunca fuente de verdad.
 10. **Revisión de Trabajo (`work_review.md`)**: Ejecutar el protocolo de revisión de `overview/work/` respetando prioridades (1º `tasks.md`, 2º `pendientes.md`, 3º `deuda_tecnica.md`) según `templates/work_review.md`.
 11. Reportar en 5 líneas máximo: agente anterior, nodo activo, tareas pendientes, estado validación, flags (alias/session/líneas/conflicto), síntesis de `work_review` y próximo paso.
 
