@@ -14,8 +14,10 @@ Cuando el usuario escribe un comando con prefijo `$`, el agente lo reconoce como
 | `$status` | Mostrar estado actual en resumen |
 | `$work [descripción]` | Registrar nueva tarea/bug |
 | `$archi` | Actualizar arquitectura viva (diagramas Mermaid y conexiones) |
-| `$learn [texto]` | Registrar aprendizaje candidato |
-| `$learnagnostico [texto]` | Abstraer a términos genéricos y registrar |
+| `$learn [texto]` | Registrar aprendizaje general candidato en `overview/learning.md` |
+| `$learnagnostico [texto]` | Abstraer a términos genéricos antes de registrar |
+| `$learnskill [skill] [texto]` | Registrar propuesta de mejora etiquetada para una skill instalada |
+| `$revlearnskill` | Revisión y promoción de propuestas (solo en el repo oficial `*-agent-rules`) |
 | `$close` | Protocolo de cierre de sesión con sincronización automática de rastreadores |
 
 ---
@@ -35,7 +37,7 @@ Pasos que el agente debe ejecutar:
 5. Alias divergentes: si alias y canónico coexisten con contenido distinto (`tasks.md`/`work.md`, `tracker.md`/`trackers/architecture.md`) → flag `[consolidar alias]` en `work.md`.
 6. `session.md` legado: si faltan `Agente:`, `## Reanudar` o `## Cambios` → reportar `session legado` (sin migrar automático).
 7. Auditoría de líneas: listar archivos de código fuente >250L; sugerir IDs `deuda` en `overview/work/deuda_tecnica.md` (prioridades **Alta**, **Media**, **Baja**).
-8. Auditar y comparar `overview/learning.md` contra `.agents/core/` (Evaluación de 3 Vías): por cada bullet en `## 📌 Propuestas de mejora` evaluar si está ✅ aplicada (promover al Histórico), ❌ rechazada (viola Filtro Agnóstico → eliminar), ⚠️ en conflicto con regla existente (flag `[conflicto learning: regla X]` en `work.md`) o ⏳ pendiente (conservar).
+8. Auditar `overview/learning.md` (Protocolo de 3 Vías — ver `core/learning_protocol.md`): por cada bullet en `## 📌 Propuestas de mejora` evaluar si está ✅ aplicada (promover al `## 📜 Histórico`), ❌ rechazada (viola Filtro Agnóstico → eliminar), ⚠️ en conflicto con regla existente (flag `[conflicto learning: regla X]` en `work.md`) o ⏳ pendiente (conservar). Bullets con etiqueta `- [nombre-skill]` son propuestas para skills: ejecutar `$revlearnskill` en el governing repo cuando aplique.
 9. **Revisión de Trabajo (`work_review.md`)**: Ejecutar el protocolo de revisión de `overview/work/` respetando prioridades (1º `tasks.md`, 2º `pendientes.md`, 3º `deuda_tecnica.md`) según `templates/work_review.md`.
 10. Reportar en 5 líneas máximo: agente anterior, nodo activo, tareas pendientes, estado validación, flags (alias/session/líneas/conflicto), síntesis de `work_review` y próximo paso.
 
@@ -95,19 +97,58 @@ $archi
 
 ### `$learn [texto]`
 
-Registrar un aprendizaje candidato en `overview/learning.md`.
+Registrar un aprendizaje general candidato en `overview/learning.md`.
 
 El agente debe:
 1. Validar el texto con el **Filtro Agnóstico** (`brain.md`): rechazar código específico, snippets de UI o comandos CLI rígidos. Si contiene código o comandos, abstraer a regla o proceso de diagnóstico agnóstico.
-2. Abrir `overview/learning.md`.
-3. Agregar bajo `## 📌 Propuestas de mejora` un bullet con el texto agnóstico.
-4. Si el archivo no existe, crearlo desde `templates/learning.md`.
+2. Agregar bajo `## 📌 Propuestas de mejora` en `overview/learning.md` un bullet sin etiqueta de skill.
+3. Si el archivo no existe, crearlo desde `templates/learning.md`.
+4. **NUNCA** modificar `.agents/` ni `.skill/`. Solo registrar en `overview/`.
 5. Confirmar: `Aprendizaje registrado en overview/learning.md.`
+
+> Ver protocolo completo en `core/learning_protocol.md`.
 
 Ejemplo de uso:
 ```
 $learn Siempre inicializar GoRouter fuera del widget tree para evitar rebuilds
 ```
+
+---
+
+### `$learnskill [nombre-skill] [texto]`
+
+Registrar una propuesta de mejora específica para una skill instalada en `.skill/`, **sin tocarla directamente**.
+
+El agente debe:
+1. Identificar el nombre de la skill (ej: `i18n-agent-skill`, `monitoring-agent-skill`).
+2. Agregar en `overview/learning.md` bajo `## 📌 Propuestas de mejora` con la **convención de etiqueta**:
+   ```
+   - [nombre-skill] descripción de la propuesta...
+   ```
+3. **NUNCA** modificar `.skill/[nombre-skill]/` directamente.
+4. Confirmar: `Propuesta para [nombre-skill] registrada en overview/learning.md.`
+
+Ejemplo:
+```
+$learnskill i18n-agent-skill Agregar soporte para idioma PT-BR en la cascada de fallback
+```
+
+---
+
+### `$revlearnskill`
+
+Revisar y promover propuestas de skills. **Ejecutar SOLO en el repositorio oficial de gobernanza** (`*-agent-rules`) durante el `$boot` del Core.
+
+El agente debe:
+1. Leer `overview/learning.md` del proyecto o del historial acumulado.
+2. Para cada bullet `- [nombre-skill]` en `## 📌 Propuestas de mejora`:
+   - ✅ **Aplicada**: Mover a `## 📜 Histórico de mejoras aplicadas` con fecha.
+   - ❌ **Rechazada**: Eliminar con nota de razón.
+   - ⏳ **Pendiente**: Conservar para la siguiente revisión.
+3. Las aprobadas se incorporan al repo canónico de la skill mediante commit directo o PR.
+4. Confirmar: `$revlearnskill completado. [N] aplicadas, [N] pendientes, [N] rechazadas.`
+
+> Ver protocolo completo en `core/learning_protocol.md`.
 
 ---
 
@@ -156,4 +197,4 @@ El agente debe:
 - Si el `$`-comando va acompañado de texto adicional (ej. `$learn texto aquí`), el texto después del comando es el argumento.
 - Si el argumento falta donde es requerido, el agente debe pedirlo en una sola línea.
 - Los comandos son **case-insensitive**: `$Boot`, `$BOOT` y `$boot` son equivalentes.
-- Si el agente no reconoce el comando, responder: `Comando desconocido. Disponibles: $boot $status $work $archi $learn $learnagnostico $close`.
+- Si el agente no reconoce el comando, responder: `Comando desconocido. Disponibles: $boot $status $work $archi $learn $learnagnostico $learnskill $revlearnskill $close`.
