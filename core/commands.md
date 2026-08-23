@@ -160,4 +160,4 @@ El agente debe:
 - Si el `$`-comando va acompañado de texto adicional (ej. `$learn texto aquí`), el texto después del comando es el argumento.
 - Si el argumento falta donde es requerido, el agente debe pedirlo en una sola línea.
 - Los comandos son **case-insensitive**: `$Boot`, `$BOOT` y `$boot` son equivalentes.
-- Si el agente no reconoce el comando, responder: `Comando desconocido. Disponibles: $boot $status $work $archi $learn $learnagnostico $learnskill $revlearnskill $close`.
+- Si el agente no reconoce el comando, responder: `Comando desconocido. Disponibles: $boot $status $work $archi $learn $learnagnostico $close`.

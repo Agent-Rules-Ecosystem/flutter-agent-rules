@@ -16,9 +16,9 @@
 | Plantillas `overview/` | `.agents/templates/` | `$boot` / Inicio |
 | Skill Clean Arch & Limits | `.agents/skills/flutter-clean-arch/SKILL.md` | Refactors / UI |
 | Skill Diagrams Mermaid | `.agents/skills/mermaid-diagrams/SKILL.md` | Diagramación |
-| Skills específicas del proyecto | `.skills/<skill_name>/SKILL.md` (submódulo del repo huésped) | Bajo demanda — vinculadas via `.agents/skills.json` |
+| Skills específicas del proyecto | `.skill/<skill_name>/SKILL.md` (submódulo del repo huésped) | Bajo demanda — escaneo automático en `$boot` |
 
-> **Gobernanza de Skills por Proyecto**: Skills específicas de un proyecto deben gestionarse como submódulo independiente en `.skills/<skill_name>/` (raíz del repo huésped, **fuera** de `.agents/`). Vincular en `.agents/skills.json` con `{ "path": "../.skills/<skill_name>" }`. Esto evita el error de Git que ocurre al intentar registrar un submódulo anidado dentro de otro submódulo (`.agents/`).
+> **Gobernanza de Skills por Proyecto**: Skills específicas de un proyecto deben gestionarse como submódulo independiente en `.skill/<skill_name>/` (raíz del repo huésped, **fuera** de `.agents/`). Esto evita el error de Git que ocurre al intentar registrar un submódulo anidado dentro de otro submódulo (`.agents/`).
 
 > **Repo oficial (`flutter-agent-rules`)**: Al editar este repositorio directamente, las rutas `.agents/core/…` equivalen a `core/…`, `.agents/templates/` a `templates/`, etc. No existe el prefijo `.agents/` en la raíz de este repo.
 

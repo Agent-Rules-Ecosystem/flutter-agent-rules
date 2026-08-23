@@ -14,7 +14,7 @@
 
 - Actualizar automáticamente todos los archivos de control en `overview/` (`work.md`, `tasks.md`, `session.md`, `pendientes.md`, `deuda_tecnica.md`, `work_review.md`, `architecture.md`) **antes** de editar código.
 - Cambios quirúrgicos: no mejorar código ajeno sin necesidad.
-- Referencias rápidas: `$boot` `$status` `$close` `$learn` `$work` `$archi` (ver `.agents/core/commands.md`).
+- Referencias rápidas: `$boot` `$status` `$work` `$archi` `$learn` `$learnagnostico` `$close` (ver `.agents/core/commands.md`).
 
 ## Qué hacer al cerrar
 
