@@ -14,11 +14,9 @@
 
 * [x] **Quickstart Guide destacada en `README.md`**:
   * Guía de integración de 1 minuto agregada al inicio del README explicando cómo añadir `.agents/` y los adaptadores en 3 comandos CLI.
-* [ ] **Configuración de Plantillas de GitHub (Template Repositories)**:
-  * Habilitar el flag `Template repository` en GitHub Settings para los repositorios centrales:
-    * [`flutter-agent-rules`](https://github.com/Agent-Rules-Ecosystem/flutter-agent-rules): Para inicializar o clonar reglas en nuevos proyectos Flutter.
-    * [`agent-rules-ecosystem`](https://github.com/Agent-Rules-Ecosystem/agent-rules-ecosystem): Plantilla raíz canónica para crear reglas de gobernanza en otros lenguajes/frameworks.
-  * Permite usar el botón verde **"Use this template"** o el comando CLI (`gh repo create --template Agent-Rules-Ecosystem/...`).
+* [x] **Configuración de Plantilla Canónica de GitHub**:
+  * Configurado [`agent-rules-ecosystem`](https://github.com/Agent-Rules-Ecosystem/agent-rules-ecosystem) como **Template Repository** oficial para crear nuevas variantes de reglas por lenguaje/framework.
+  * `flutter-agent-rules` se mantiene como repositorio de gobernanza activo para ser consumido directamente como submódulo de Git (`.agents/`).
 * [ ] **Licenciamiento Abierto**:
   * Asegurar la inclusión de la licencia MIT o Apache 2.0 para habilitar la adopción en la comunidad de desarrolladores y empresas.
 * [ ] **Limpieza de Datos de Privacidad y Auditoría Pre-Publicación**:
