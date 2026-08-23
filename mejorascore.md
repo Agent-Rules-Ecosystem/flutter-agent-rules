@@ -56,12 +56,12 @@
 
 *Prioridad: Estratégica | Factibilidad: Progresiva*
 
-* [ ] **Puente y Soporte para MCP (Model Context Protocol)**:
-  * Diseñar un conector o servidor local MCP que exponga las reglas y scripts de diagnóstico como herramientas nativas consumibles por modelos compatibles (Anthropic, Claude Desktop, Cursor, etc.).
-* [ ] **Métricas y Telemetría de Rendimiento de Agentes**:
-  * Medir la tasa de éxito de tareas, ahorro estimado de tokens por sesión y fricción de contexto durante los ciclos de `$work` y `$close`.
-* [ ] **Auto-Promoción de Aprendizajes de `overview/learning.md`**:
-  * Mecanismo para automatizar la extracción de propuestas validadas en `learning.md` y generar Pull Requests hacia el repositorio central `flutter-agent-rules`.
+* [x] **Puente y Soporte para MCP (Model Context Protocol)**:
+  * Diseñado e implementado el servidor local JSON-RPC/MCP (`scripts/mcp_server.py`) que expone las herramientas de diagnóstico (`agent_health`, `install_skill`, `read_tracker`) a modelos compatibles (Anthropic, Claude Desktop, Cursor, OpenAI, etc.).
+* [x] **Métricas y Telemetría de Rendimiento de Agentes**:
+  * Desarrollado el script de telemetría y rendimiento (`scripts/agent_telemetry.py`) que genera `overview/telemetry.json` registrando tasas de resolución de tareas, deuda técnica y estado del agente.
+* [x] **Auto-Promoción de Aprendizajes de `overview/learning.md`**:
+  * Implementado el script de extracción y propuesta de reglas (`scripts/promote_learning.py`) para automatizar la promoción de lecciones validadas hacia la gobernanza central.
 
 ---
 
