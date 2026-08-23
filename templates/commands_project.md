@@ -16,8 +16,6 @@
 | `$archi` | Actualizar arquitectura viva (diagramas Mermaid) |
 | `$learn [texto]` | Registrar aprendizaje general en `overview/learning.md` |
 | `$learnagnostico [texto]` | Abstraer a términos genéricos antes de registrar |
-| `$learnskill [skill] [texto]` | Registrar propuesta etiquetada para una skill |
-| `$revlearnskill` | Clasificar propuestas de skills (solo en governing repo) |
 | `$close` | Protocolo de cierre de sesión con sincronización de rastreadores |
 
 ---

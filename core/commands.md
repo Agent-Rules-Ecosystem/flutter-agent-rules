@@ -16,8 +16,6 @@ Cuando el usuario escribe un comando con prefijo `$`, el agente lo reconoce como
 | `$archi` | Actualizar arquitectura viva (diagramas Mermaid y conexiones) |
 | `$learn [texto]` | Registrar aprendizaje general candidato en `overview/learning.md` |
 | `$learnagnostico [texto]` | Abstraer a términos genéricos antes de registrar |
-| `$learnskill [skill] [texto]` | Registrar propuesta de mejora etiquetada para una skill instalada |
-| `$revlearnskill` | Revisión y promoción de propuestas (solo en el repo oficial `*-agent-rules`) |
 | `$close` | Protocolo de cierre de sesión con sincronización automática de rastreadores |
 
 ---
@@ -114,44 +112,6 @@ Ejemplo de uso:
 $learn Siempre inicializar GoRouter fuera del widget tree para evitar rebuilds
 ```
 
----
-
-### `$learnskill [nombre-skill] [texto]`
-
-Registrar una propuesta de mejora específica para una skill instalada en `.skill/`, **sin tocarla directamente**.
-
-El agente debe:
-1. Identificar el nombre de la skill (ej: `i18n-agent-skill`, `monitoring-agent-skill`).
-2. Agregar en `overview/learning.md` bajo `## 📌 Propuestas de mejora` con la **convención de etiqueta**:
-   ```
-   - [nombre-skill] descripción de la propuesta...
-   ```
-3. **NUNCA** modificar `.skill/[nombre-skill]/` directamente.
-4. Confirmar: `Propuesta para [nombre-skill] registrada en overview/learning.md.`
-
-Ejemplo:
-```
-$learnskill i18n-agent-skill Agregar soporte para idioma PT-BR en la cascada de fallback
-```
-
----
-
-### `$revlearnskill`
-
-Revisar y clasificar las propuestas de skills dentro de `overview/learning.md` del governing repo. **Ejecutar SOLO en el repositorio oficial de gobernanza** (`*-agent-rules`) durante el `$boot` del Core.
-
-**Todo el resultado queda en `overview/learning.md`. El agente no modifica ningún otro repositorio ni submódulo.**
-
-El agente debe:
-1. Leer `overview/learning.md` del governing repo.
-2. Para cada bullet `- [nombre-skill]` en `## 📌 Propuestas de mejora`:
-   - ✅ **Aplicada**: Mover a `## 📜 Histórico de mejoras aplicadas` con fecha.
-   - ❌ **Rechazada**: Eliminar con nota de razón (viola Filtro Agnóstico o no aplica).
-   - ⏳ **Pendiente**: Conservar para la siguiente revisión.
-3. Confirmar: `$revlearnskill completado. [N] aplicadas al Histórico, [N] pendientes, [N] rechazadas.`
-
-> La incorporación física de una mejora al repo canónico de la skill la realiza el **mantenedor** — no el agente desde el proyecto.
-> Ver protocolo completo en `core/learning_protocol.md`.
 
 ---
 
