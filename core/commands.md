@@ -137,17 +137,19 @@ $learnskill i18n-agent-skill Agregar soporte para idioma PT-BR en la cascada de 
 
 ### `$revlearnskill`
 
-Revisar y promover propuestas de skills. **Ejecutar SOLO en el repositorio oficial de gobernanza** (`*-agent-rules`) durante el `$boot` del Core.
+Revisar y clasificar las propuestas de skills dentro de `overview/learning.md` del governing repo. **Ejecutar SOLO en el repositorio oficial de gobernanza** (`*-agent-rules`) durante el `$boot` del Core.
+
+**Todo el resultado queda en `overview/learning.md`. El agente no modifica ningún otro repositorio ni submódulo.**
 
 El agente debe:
-1. Leer `overview/learning.md` del proyecto o del historial acumulado.
+1. Leer `overview/learning.md` del governing repo.
 2. Para cada bullet `- [nombre-skill]` en `## 📌 Propuestas de mejora`:
    - ✅ **Aplicada**: Mover a `## 📜 Histórico de mejoras aplicadas` con fecha.
-   - ❌ **Rechazada**: Eliminar con nota de razón.
+   - ❌ **Rechazada**: Eliminar con nota de razón (viola Filtro Agnóstico o no aplica).
    - ⏳ **Pendiente**: Conservar para la siguiente revisión.
-3. Las aprobadas se incorporan al repo canónico de la skill mediante commit directo o PR.
-4. Confirmar: `$revlearnskill completado. [N] aplicadas, [N] pendientes, [N] rechazadas.`
+3. Confirmar: `$revlearnskill completado. [N] aplicadas al Histórico, [N] pendientes, [N] rechazadas.`
 
+> La incorporación física de una mejora al repo canónico de la skill la realiza el **mantenedor** — no el agente desde el proyecto.
 > Ver protocolo completo en `core/learning_protocol.md`.
 
 ---

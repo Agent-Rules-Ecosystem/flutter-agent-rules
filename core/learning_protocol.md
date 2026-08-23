@@ -3,65 +3,63 @@
 ## 🔒 Principio de Inviolabilidad Absoluta
 
 > **REGLA MÁXIMA DEL ECOSISTEMA — INVIOLABLE:**
-> Ningún agente, script ni usuario cliente puede **jamás** modificar, editar, reemplazar o sobrescribir archivos dentro de `.agents/` ni `.skill/` directamente desde un **proyecto cliente**.
+> Ningún agente ni proyecto cliente puede **jamás** modificar, editar, reemplazar o sobrescribir archivos dentro de `.agents/` ni `.skill/`.
 >
-> - `.agents/` → Repositorio de gobernanza de solo lectura.
-> - `.skill/` → Habilidades instaladas como submódulos Git de solo lectura.
+> - `.agents/` → Repositorio de gobernanza de **solo lectura** para el proyecto cliente.
+> - `.skill/` → Skills instaladas como submódulos Git de **solo lectura** para el proyecto cliente.
 >
-> Todo cambio legítimo en `.agents/` o `.skill/` DEBE realizarse:
-> 1. **En el repositorio oficial de gobernanza** (`*-agent-rules`) durante el ciclo `$revlearnskill`.
-> 2. Mediante **Pull Request** o **commit directo en el repo canónico** de la skill o del governing repository.
-> 3. **Jamás** mediante edición local en un proyecto cliente.
+> **Todo flujo de aprendizaje, propuesta o mejora generada por el agente o por la ejecución de skills debe registrarse EXCLUSIVAMENTE en `overview/learning.md` del proyecto.** Nunca en `.agents/` ni en `.skill/`.
 
 ---
 
 ## ⚡ Comandos del Protocolo de Aprendizaje
 
 ### `$learn [texto]`
-**Propósito**: Registrar un aprendizaje general candidato (agnóstico de skill) desde un proyecto cliente.
+**Propósito**: Registrar un aprendizaje general candidato (agnóstico de skill) desde cualquier proyecto.
 
 **Protocolo**:
-1. Validar texto con el **Filtro Agnóstico** (`brain.md`): abstraer código, nombres de módulos específicos y rutas. Si contiene código, abstraer a principio de arquitectura.
-2. Agregar bajo `## 📌 Propuestas de mejora` en `overview/learning.md`:
+1. Validar texto con el **Filtro Agnóstico** (`brain.md`): abstraer código, nombres de módulos y rutas específicas. Si contiene código, convertir a principio de arquitectura.
+2. Agregar en `overview/learning.md` bajo `## 📌 Propuestas de mejora`:
    ```
    - propuesta en términos agnósticos de arquitectura...
    ```
 3. Si el archivo no existe, crearlo desde `templates/learning.md`.
-4. **NUNCA** modificar `.agents/` ni `.skill/`. Solo registrar en `overview/`.
-5. Confirmar: `Aprendizaje registrado en overview/learning.md.`
+4. Confirmar: `Aprendizaje registrado en overview/learning.md.`
 
 ---
 
 ### `$learnskill [nombre-skill] [texto]`
-**Propósito**: Registrar una propuesta de mejora específica a una **skill instalada** en `.skill/`, sin tocarla directamente.
+**Propósito**: Registrar en `overview/learning.md` una propuesta de mejora orientada a una skill específica, **sin tocar `.skill/` ni `.agents/` bajo ninguna circunstancia**.
 
 **Protocolo**:
 1. Identificar el nombre de la skill (ej: `i18n-agent-skill`, `monitoring-agent-skill`).
-2. Agregar bajo `## 📌 Propuestas de mejora` en `overview/learning.md` usando la **convención de etiquetado**:
+2. Agregar en `overview/learning.md` bajo `## 📌 Propuestas de mejora` con la **convención de etiquetado obligatoria**:
    ```
    - [nombre-skill] propuesta de mejora en términos descriptivos...
    ```
-   Ejemplo:
+   Ejemplos:
    ```
    - [i18n-agent-skill] Agregar soporte para idioma PT-BR en la cascada de fallback.
    - [monitoring-agent-skill] El comando $monitor:audit no detecta módulos sin barrel export.
    ```
-3. **NUNCA** modificar `.skill/[nombre-skill]/` directamente.
-4. Confirmar: `Propuesta para [nombre-skill] registrada en overview/learning.md.`
+3. Confirmar: `Propuesta para [nombre-skill] registrada en overview/learning.md.`
 
 ---
 
 ### `$revlearnskill`
-**Propósito**: Revisar y promover propuestas de aprendizaje de skills. **Solo se ejecuta en el repositorio oficial de gobernanza** (`*-agent-rules`) durante el ciclo `$boot` del Core.
+**Propósito**: Revisar y clasificar las propuestas etiquetadas `[nombre-skill]` dentro del `overview/learning.md` del **governing repo** (`*-agent-rules`). **Solo se ejecuta durante el `$boot` del repositorio oficial de gobernanza**.
 
-**Protocolo** (en el repo canónico `*-agent-rules`):
-1. Leer `overview/learning.md` (del proyecto bajo revisión o del historial acumulado en el governing repo).
-2. Para cada bullet en `## 📌 Propuestas de mejora` con etiqueta `- [nombre-skill]`:
-   - ✅ **Aplicada**: La mejora ya fue incorporada al repo canónico de la skill → mover a `## 📜 Histórico de mejoras aplicadas` con fecha y referencia.
-   - ❌ **Rechazada**: Viola el Filtro Agnóstico o es demasiado específica del proyecto → eliminar con nota de razón.
-   - ⏳ **Pendiente**: Válida pero aún no incorporada → conservar en `## 📌 Propuestas de mejora`.
-3. Las propuestas aprobadas se incorporan al repo canónico de la skill mediante commit directo o PR.
-4. Confirmar: `Revisión $revlearnskill completada. [N] aplicadas, [N] pendientes, [N] rechazadas.`
+**Todo el resultado de esta revisión queda en `overview/learning.md`. El agente no toca ningún otro repositorio ni submódulo.**
+
+**Protocolo**:
+1. Leer `overview/learning.md` del governing repo.
+2. Para cada bullet `- [nombre-skill]` en `## 📌 Propuestas de mejora`:
+   - ✅ **Aplicada**: La mejora ya fue documentada o incorporada → mover a `## 📜 Histórico de mejoras aplicadas` con fecha.
+   - ❌ **Rechazada**: Es demasiado específica, viola el Filtro Agnóstico o no aplica → eliminar con nota de razón al final de la línea.
+   - ⏳ **Pendiente**: Válida y aún no incorporada → conservar en `## 📌 Propuestas de mejora`.
+3. Confirmar: `$revlearnskill completado. [N] aplicadas al Histórico, [N] pendientes, [N] rechazadas.`
+
+> **Nota**: El agente documenta en `overview/learning.md`. La incorporación física de una mejora a la skill canónica la realiza el **mantenedor del repositorio** en el repo oficial de la skill — no el agente desde el proyecto.
 
 ---
 
@@ -78,7 +76,7 @@
 
 ## 📜 Histórico de mejoras aplicadas
 
-- [YYYY-MM-DD] [nombre-skill] descripción de lo que fue incorporado.
+- [YYYY-MM-DD] [nombre-skill] descripción breve de lo documentado.
 ```
 
 ---
@@ -87,11 +85,11 @@
 
 ```mermaid
 graph TD
-    A["Proyecto Cliente"] -- "$learn / $learnskill" --> B["overview/learning.md\n## Propuestas de mejora"]
-    B -- "$revlearnskill\n(en governing repo *-agent-rules)" --> C{"Evaluación"}
-    C -- "✅ Aplicada" --> D[".skill/[nombre-skill]\n(commit en repo canónico)"]
-    C -- "✅ Aplicada" --> E["overview/learning.md\n## Histórico de mejoras"]
-    C -- "❌ Rechazada" --> F["Eliminada con nota"]
+    A["Proyecto Cliente"] -- "$learn / $learnskill" --> B["overview/learning.md\n## 📌 Propuestas de mejora"]
+    B -- "$revlearnskill\n(solo en governing repo *-agent-rules)" --> C{"Clasificación"}
+    C -- "✅ Aplicada" --> D["overview/learning.md\n## 📜 Histórico de mejoras aplicadas"]
+    C -- "❌ Rechazada" --> E["Eliminada con nota de razón"]
     C -- "⏳ Pendiente" --> B
-    D -.-> G["Todos los proyectos\nse benefician vía git pull"]
 ```
+
+> **Todos los nodos terminan en `overview/learning.md`.** El agente nunca escribe en `.agents/` ni en `.skill/`.
