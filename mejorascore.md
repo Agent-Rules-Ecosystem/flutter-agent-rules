@@ -28,14 +28,14 @@
 
 *Prioridad: Alta | Factibilidad: Alta*
 
-* [x] **Script de Salud del Estado del Agente (`agent_health`)**:
-  * Desarrollado el script automatizado ejecutable (`scripts/agent_health.sh`) para verificar la integridad del proyecto antes de un commit o durante `$boot`.
+* [x] **Plantilla de Salud del Estado del Agente (`agent_health.md`)**:
+  * Definida la plantilla declarativa Markdown (`scripts/agent_health.md`) para auditar la integridad del proyecto antes de un commit o durante `$boot`.
 * [x] **Verificador de Consistencia de `overview/`**:
-  * Valida que los rastreadores de `overview/` (`session.md`, `work.md`, `architecture.md`, `tasks.md`, `pendientes.md`, `deuda_tecnica.md`, `learning.md`, `work_review.md`) existan, mantengan el formato esperado y no estén corruptos o vacíos.
+  * Protocolo declarativo para validar que los rastreadores de `overview/` (`session.md`, `work.md`, `architecture.md`, `tasks.md`, `pendientes.md`, `deuda_tecnica.md`, `learning.md`, `work_review.md`) existan y no estén corruptos o vacíos.
 * [x] **Validador de Sintaxis Mermaid sintética**:
-  * Analiza automáticamente que los diagramas Mermaid no contengan errores de sintaxis (como paréntesis no entrecomillados dentro de etiquetas).
+  * Guía declarativa para analizar que los diagramas Mermaid no contengan errores de sintaxis (como paréntesis no entrecomillados dentro de etiquetas).
 * [x] **Auditor del Estándar de Skills (`SKILL_STANDARD.md`)**:
-  * Verifica que todos los submódulos dentro de `.skill/` o `skills/` cumplan con la estructura canónica (`SKILL.md`, `adapters/`, etc.).
+  * Matriz declarativa para verificar que todos los submódulos dentro de `.skill/` o `skills/` cumplan con la estructura canónica (`SKILL.md`, `adapters/`, etc.).
 
 ---
 
@@ -43,12 +43,12 @@
 
 *Prioridad: Media | Factibilidad: Media-Alta*
 
-* [x] **Especificación de Manifiesto (`skill.yaml`)**:
-  * Esquema ligero de metadatos (`name`, `version`, `description`, `author`, `compatible_rules`, `dependencies`) generado e integrado en las 12 habilidades del ecosistema.
+* [x] **Especificación de Manifiesto (`skill.md`)**:
+  * Esquema ligero de metadatos 100% Markdown (`name`, `version`, `description`, `author`, `compatible_rules`, `dependencies`) integrado en `skill.md` en las 12 habilidades del ecosistema.
 * [x] **Resolución de Dependencias entre Skills**:
-  * Implementada la declaración y resolución automática de requisitos previos (ejemplo: `flutter-firebase-auth-agent-skill` y `flutter-firebase-odoo-agent-skill` requieren `flutter-bloc-patterns-agent-skill`).
-* [x] **Instalador Inteligente de Skills**:
-  * Desarrollado el script CLI ejecutable (`scripts/install_skill.sh <skill-name-or-url>`) para clonar como submódulo e inicializar una habilidad junto con todas sus dependencias recursivas.
+  * Declaración y resolución lógica de requisitos previos (ejemplo: `flutter-firebase-auth-agent-skill` y `flutter-firebase-odoo-agent-skill` requieren `flutter-bloc-patterns-agent-skill`).
+* [x] **Instalador Inteligente de Skills (`install_skill.md`)**:
+  * Guía declarativa en formato Markdown (`scripts/install_skill.md`) para inicializar una habilidad como submódulo junto con todas sus dependencias recursivas.
 
 ---
 
@@ -57,11 +57,11 @@
 *Prioridad: Estratégica | Factibilidad: Progresiva*
 
 * [x] **Puente y Soporte para MCP (Model Context Protocol)**:
-  * Diseñado e implementado el servidor local JSON-RPC/MCP (`scripts/mcp_server.py`) que expone las herramientas de diagnóstico (`agent_health`, `install_skill`, `read_tracker`) a modelos compatibles (Anthropic, Claude Desktop, Cursor, OpenAI, etc.).
+  * Especificación declarativa en Markdown (`scripts/mcp_server.md`) que define el conector local JSON-RPC/MCP para exponer herramientas de diagnóstico a modelos compatibles (Anthropic, Claude Desktop, Cursor, OpenAI, etc.).
 * [x] **Métricas y Telemetría de Rendimiento de Agentes**:
-  * Desarrollado el script de telemetría y rendimiento (`scripts/agent_telemetry.py`) que genera `overview/telemetry.json` registrando tasas de resolución de tareas, deuda técnica y estado del agente.
+  * Plantilla declarativa (`scripts/agent_telemetry.md`) para registrar métricas de resolución de tareas, deuda técnica e histórico en formato Markdown.
 * [x] **Auto-Promoción de Aprendizajes de `overview/learning.md`**:
-  * Implementado el script de extracción y propuesta de reglas (`scripts/promote_learning.py`) para automatizar la promoción de lecciones validadas hacia la gobernanza central.
+  * Especificación declarativa (`scripts/promote_learning.md`) para la extracción y propuesta de reglas hacia la gobernanza central.
 
 ---
 
