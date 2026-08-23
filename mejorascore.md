@@ -19,7 +19,7 @@
   * `flutter-agent-rules` se mantiene como repositorio de gobernanza activo para ser consumido directamente como submódulo de Git (`.agents/`).
 * [x] **Licenciamiento Abierto (MIT License)**:
   * El repositorio cuenta con el archivo oficial [`LICENSE`](https://github.com/Agent-Rules-Ecosystem/flutter-agent-rules/blob/main/LICENSE) bajo la **Licencia MIT**, habilitando el uso libre, comercial y de modificación por la comunidad.
-* [ ] **Limpieza de Datos de Privacidad y Auditoría Pre-Publicación**:
+* [x] **Limpieza de Datos de Privacidad y Auditoría Pre-Publicación**:
   * Verificar que todos los ejemplos y plantillas en `templates/` estén 100% desprovistos de credenciales, tokens o referencias de dominio privado.
 
 ---
