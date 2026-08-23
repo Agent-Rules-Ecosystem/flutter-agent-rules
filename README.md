@@ -8,30 +8,24 @@ Se instala como submódulo de Git en `.agents/`. Las reglas globales son 100% ag
 
 ## ⚡ Quickstart (TL;DR — 1 minuto)
 
-### 1. Agrega la gobernanza en tu proyecto Flutter
+### 1. Agrega la gobernanza a tu proyecto
 ```bash
 git submodule add https://github.com/Agent-Rules-Ecosystem/flutter-agent-rules.git .agents
 ```
 
-### 2. Copia el adaptador según tu entorno de IA
-```bash
-# Para Gemini / Antigravity:
-cp .agents/adapters/GEMINI.md GEMINI.md
-
-# Para Claude:
-cp .agents/adapters/CLAUDE.md CLAUDE.md
-
-# Para OpenAI / Codex:
-cp .agents/adapters/AGENTS.md AGENTS.md
-
-# Para Cursor:
-mkdir -p .cursor/rules && cp .agents/adapters/cursor-rule.mdc .cursor/rules/agents.mdc
-```
-
-### 3. Inicia el ciclo en la primera interacción con tu Agente
-Escribe en el chat:
+### 2. Inicia el ciclo en el chat de tu Agente (Cursor, Antigravity, Claude, etc.)
 ```text
 $boot
+```
+
+### 3. Ejecuta tareas y registra el avance
+```text
+$work [descripción de la tarea]
+```
+
+### 4. Cierra la sesión y sincroniza la memoria del proyecto
+```text
+$close
 ```
 
 ---
