@@ -12,8 +12,8 @@
 
 * [x] **Publicación en GitHub**: Hospedado en la organización oficial [`Agent-Rules-Ecosystem/flutter-agent-rules`](https://github.com/Agent-Rules-Ecosystem/flutter-agent-rules).
 
-* [ ] **Quickstart Guide (`QUICKSTART.md`)**:
-  * Crear una guía de integración de 1 minuto explicando cómo añadir `.agents/` y `.skill/` en un proyecto Flutter nuevo o existente en 3 comandos CLI.
+* [x] **Quickstart Guide destacada en `README.md`**:
+  * Guía de integración de 1 minuto agregada al inicio del README explicando cómo añadir `.agents/` y los adaptadores en 3 comandos CLI.
 * [ ] **Configuración de Plantilla de GitHub (Template Repository)**:
   * Habilitar el repositorio `flutter-agent-rules` y la especificación `SKILL_STANDARD` como plantillas oficiales en GitHub.
 * [ ] **Licenciamiento Abierto**:
