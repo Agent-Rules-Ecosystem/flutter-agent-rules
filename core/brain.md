@@ -45,7 +45,7 @@ Cuando el usuario escribe **"ejecuta .agents"** (o variante como "corre .agents"
 ## Inicio
 
 - Ejecutar `git submodule status`.
-- Leer core y `overview/session.md`, `overview/work.md`, `overview/work/tasks.md`, `overview/work/deuda_tecnica.md`, `overview/work/pendientes.md`, `overview/trackers/progress.md`.
+- Leer core y `overview/session.md`, `overview/work.md`, `overview/work/tasks.md`, `overview/work/deuda_tecnica.md`, `overview/work/pendientes.md`, `overview/trackers/progress.md` y reportes de skills en `overview/work/skill/`.
 - Si falta `overview/` o archivos base, crearlos desde `.agents/templates/`.
 - Si falta `overview/architecture.md`, crearlo desde plantilla antes de trabajar.
 - **Orden de prioridad de atención en `$work`**: 
@@ -58,6 +58,7 @@ Cuando el usuario escribe **"ejecuta .agents"** (o variante como "corre .agents"
 - **Auditoría de líneas (discovery/`$boot`)**: listar archivos de código fuente >250L; sugerir IDs `deuda` en `overview/work/deuda_tecnica.md` ordenadas por prioridad (**Alta**, **Media**, **Baja**); no crear filas fijas sin confirmación implícita de la tarea.
 - **Registro preventivo previo a ejecución (Pre-execution Work Logging)**: Al recibir un requerimiento o bug, actualizar de forma automática y simultánea los archivos de control de `overview/` (`work.md`, `work/tasks.md`, `session.md`, `pendientes.md`, `deuda_tecnica.md`, `work_review.md` y `architecture.md`) INMEDIATAMENTE antes de ejecutar cualquier acción, sin requerir recordatorio manual del usuario. En `tasks.md`, describir la tarea a iniciar, clasificarla (`problema`, `mejora`, `refactor`) y proponer hipótesis/soluciones o rutas de trabajo. En caso de reporte de bug, incluir una hipótesis breve de causa raíz (5-7 palabras). Derivar automáticamente 1 o 2 mejoras/tareas asociadas a los pendientes para garantizar tolerancia a desconexión, corte de luz o agotamiento de tokens.
 - **Backlog canónico único**: `overview/work.md` es el único índice maestro de IDs; los detalles de tareas activas van en `overview/work/tasks.md`, los pendientes identificados al cerrar en `overview/work/pendientes.md` y la deuda técnica en `overview/work/deuda_tecnica.md`. No duplicar en alias `tasks.md`.
+- **Triaje e Integración Activa de Skills (`overview/work/skill/`)**: Durante `$boot`, `$work` y `$close`, el agente escanea obligatoriamente la carpeta `overview/work/skill/` en busca de reportes `.md` generados por las skills instaladas en `.skill/`. Cada hallazgo en dichos reportes se triaja e integra automáticamente en `overview/work/deuda_tecnica.md` (refactores/arquitectura), `overview/work/pendientes.md` (features/secundarios) o `overview/work/tasks.md` (bugs/urgentes), conservando el archivo `overview/work/skill/<skill-name>.md` como fuente de verdad con la evidencia completa provista por la skill.
 - **Protocolo de Revisión de Trabajo (`work_review.md`)**: Al finalizar `$boot`, ejecutar obligatoriamente el protocolo definido en `templates/work_review.md` para auditar `overview/work/` y reportar un síntesis de 4 líneas.
 - **Historial de Intentos firmado por Agente**: En `work.md` y trackers de bugs/tareas, mantener un registro incremental de intentos de resolución. Nunca borrar intentos previos. Reglas:
   - **Mismo día:** actualizar la entrada existente de esa fecha (sin duplicar).
