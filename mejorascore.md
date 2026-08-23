@@ -28,14 +28,14 @@
 
 *Prioridad: Alta | Factibilidad: Alta*
 
-* [ ] **Script de Salud del Estado del Agente (`agent_health`)**:
-  * Desarrollar un script automatizado (Bash o Dart) que verifique la integridad del proyecto antes de un commit o durante `$boot`.
-* [ ] **Verificador de Consistencia de `overview/`**:
-  * Validar que los 7 rastreadores de `overview/` (`session.md`, `work.md`, `architecture.md`, `tasks.md`, `pendientes.md`, `deuda_tecnica.md`, `learning.md`) existan, mantengan el formato esperado y no tengan secciones corruptas.
-* [ ] **Validador de Sintaxis Mermaid sintética**:
-  * Analizar automáticamente que los diagramas Mermaid generados durante `$archi` no contengan errores de sintaxis que rompan el renderizado.
-* [ ] **Auditor del Estándar de Skills (`SKILL_STANDARD.md`)**:
-  * Verificar que todos los submódulos dentro de `.skill/` cumplan con la estructura canónica (`adapters/`, `core/`, `knowledge/`, `resources/`, `scripts/`).
+* [x] **Script de Salud del Estado del Agente (`agent_health`)**:
+  * Desarrollado el script automatizado ejecutable (`scripts/agent_health.sh`) para verificar la integridad del proyecto antes de un commit o durante `$boot`.
+* [x] **Verificador de Consistencia de `overview/`**:
+  * Valida que los rastreadores de `overview/` (`session.md`, `work.md`, `architecture.md`, `tasks.md`, `pendientes.md`, `deuda_tecnica.md`, `learning.md`, `work_review.md`) existan, mantengan el formato esperado y no estén corruptos o vacíos.
+* [x] **Validador de Sintaxis Mermaid sintética**:
+  * Analiza automáticamente que los diagramas Mermaid no contengan errores de sintaxis (como paréntesis no entrecomillados dentro de etiquetas).
+* [x] **Auditor del Estándar de Skills (`SKILL_STANDARD.md`)**:
+  * Verifica que todos los submódulos dentro de `.skill/` o `skills/` cumplan con la estructura canónica (`SKILL.md`, `adapters/`, etc.).
 
 ---
 
