@@ -17,8 +17,8 @@
 * [x] **Configuración de Plantilla Canónica de GitHub**:
   * Configurado [`agent-rules-ecosystem`](https://github.com/Agent-Rules-Ecosystem/agent-rules-ecosystem) como **Template Repository** oficial para crear nuevas variantes de reglas por lenguaje/framework.
   * `flutter-agent-rules` se mantiene como repositorio de gobernanza activo para ser consumido directamente como submódulo de Git (`.agents/`).
-* [ ] **Licenciamiento Abierto**:
-  * Asegurar la inclusión de la licencia MIT o Apache 2.0 para habilitar la adopción en la comunidad de desarrolladores y empresas.
+* [x] **Licenciamiento Abierto (MIT License)**:
+  * El repositorio cuenta con el archivo oficial [`LICENSE`](https://github.com/Agent-Rules-Ecosystem/flutter-agent-rules/blob/main/LICENSE) bajo la **Licencia MIT**, habilitando el uso libre, comercial y de modificación por la comunidad.
 * [ ] **Limpieza de Datos de Privacidad y Auditoría Pre-Publicación**:
   * Verificar que todos los ejemplos y plantillas en `templates/` estén 100% desprovistos de credenciales, tokens o referencias de dominio privado.
 
