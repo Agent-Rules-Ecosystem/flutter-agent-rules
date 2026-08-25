@@ -91,16 +91,9 @@ overview/
 git submodule add https://github.com/Agent-Rules-Ecosystem/flutter-agent-rules.git .agents
 ```
 
-### 2. Copiar adaptador según la herramienta de IA
 
-Copiar el adaptador correspondiente desde `.agents/adapters/` a la raíz de su entorno:
 
-- **OpenAI / Codex**: `adapters/AGENTS.md` → `AGENTS.md`
-- **Claude**: `adapters/CLAUDE.md` → `CLAUDE.md`
-- **Gemini / Antigravity**: `adapters/GEMINI.md` → `GEMINI.md`
-- **Cursor**: `adapters/cursor-rule.mdc` → `.cursor/rules/agents.mdc`
-
-### 3. Iniciar el proyecto
+### 2. Iniciar el proyecto
 
 Escribir en la primera interacción del agente:
 
