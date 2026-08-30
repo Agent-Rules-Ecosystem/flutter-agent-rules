@@ -1,4 +1,4 @@
-# Mejoras pendientes para el Core (.agents)
+# 📚 Learning & Propuestas de Mejora
 
 Lista directa de mejoras identificadas para promover al repositorio global `.agents`.
 

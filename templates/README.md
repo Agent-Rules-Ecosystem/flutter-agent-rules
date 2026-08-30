@@ -12,6 +12,7 @@ overview/
 │   ├── pendientes.md
 │   └── deuda_tecnica.md
 ├── architecture.md
+├── architecture/
 ├── learning.md
 ├── session.md
 ├── work.md

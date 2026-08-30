@@ -66,7 +66,8 @@ El estado del proyecto vive en la raíz del repositorio huésped dentro del dire
 overview/
 ├── session.md             # Sesión activa, firma de Agente y puntos de reanudación
 ├── work.md                # Índice maestro de tareas, bugs y backlog canónico único
-├── architecture.md        # Mapa de Arquitectura Viva (Diagramas Mermaid y capas)
+├── architecture.md        # Mapa de Arquitectura Viva Hub (Diagramas Mermaid y capas)
+├── architecture/          # Subdocumentos de Arquitectura Viva Spoke (rutas, data_flow, módulos)
 ├── work_review.md         # Reporte de revisión mutable generado al final de $boot
 ├── work/
 │   ├── tasks.md           # Tarea activa en ejecución, soluciones y rutas
