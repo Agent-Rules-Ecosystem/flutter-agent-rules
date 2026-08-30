@@ -13,7 +13,7 @@
 | `$boot` | Bootstrap completo del proyecto |
 | `$status` | Mostrar estado actual en resumen |
 | `$work [descripción]` | Registrar nueva tarea o bug |
-| `$archi` | Actualizar arquitectura viva (diagramas Mermaid) |
+| `$archi` | Actualizar arquitectura viva conforme a ARCHITECTURE_STANDARD.md (Hub & Spoke) |
 | `$learn [texto]` | Registrar aprendizaje general en `overview/learning.md` |
 | `$learnagnostico [texto]` | Abstraer a términos genéricos antes de registrar |
 | `$close` | Protocolo de cierre de sesión con sincronización de rastreadores |
