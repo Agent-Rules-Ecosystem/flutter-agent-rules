@@ -82,14 +82,15 @@ $work bug: el drawer no cierra al navegar con GoRouter en iOS
 Protocolo dedicado exclusivamente a auditar, modularizar y mantener la arquitectura del proyecto conforme al **Agent Architecture Standard (`ARCHITECTURE_STANDARD.md`)**.
 
 El agente debe:
+0. **Detección de archivo plano legado**: Si existe `overview/architecture.md` como archivo único (no carpeta), leerlo íntegramente como fuente de referencia. Usarlo para extraer diagramas, capas y módulos ya documentados antes de generar los subdocumentos. **No eliminarlo** hasta que la migración esté verificada.
 1. Escanear exhaustivamente la estructura completa del proyecto, módulos y rutas.
-2. Mantener `ARCHITECTURE.md` en la raíz como un índice sintético ligero (< 200L) con diagramas Mermaid de alto nivel y tabla de hipervínculos navegables.
-3. Crear o actualizar los subdocumentos en `overview/architecture/`:
-   - `overview/architecture/routes_map.md` (Mapa global de enrutamiento).
-   - `overview/architecture/core/data_flow.md` (Estado global, sync y persistencia).
-   - `overview/architecture/core/import_rules.md` (Reglas de importación por nivel).
+2. Mantener `overview/architecture.md` como **Índice Raíz Hub & Spoke** (< 200L): diagrama Mermaid de alto nivel de capas, tabla de capas del sistema e hipervínculos a los subdocumentos en `overview/architecture/`. Si proviene de migración del archivo plano legado, extraer solo el contenido de alto nivel y mover los detalles técnicos a los subdocumentos.
+3. Crear o actualizar los subdocumentos en `overview/architecture/` extrayendo o refinando el contenido del archivo plano legado (si existía):
+   - `overview/architecture/routes_map.md` (Mapa global de enrutamiento y GoRouter).
+   - `overview/architecture/core/data_flow.md` (Estado global, Riverpod/Hive, sync y persistencia).
+   - `overview/architecture/core/import_rules.md` (Reglas de importación por nivel de capa).
    - `overview/architecture/modules/<modulo>.md` (Subdocumento por cada módulo que supere 2 diagramas Mermaid o 5 pantallas/componentes).
-4. Confirmar: `Arquitectura viva actualizada conforme a ARCHITECTURE_STANDARD.md (Índice Raíz ARCHITECTURE.md + Subdocumentos en overview/architecture/).`
+4. Confirmar: `Arquitectura viva actualizada conforme a ARCHITECTURE_STANDARD.md (Índice Raíz overview/architecture.md + Subdocumentos en overview/architecture/).`
 
 Ejemplo de uso:
 ```
