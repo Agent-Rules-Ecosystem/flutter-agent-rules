@@ -6,26 +6,21 @@ Se instala como submódulo de Git en `.agents/`. Las reglas globales son 100% ag
 
 ---
 
-## ⚡ Quickstart (TL;DR — 1 minuto)
+## ⚡ Quick Start
 
-### 1. Agrega la gobernanza a tu proyecto
+**1. Instala la gobernanza en tu proyecto**
 ```bash
-git submodule add https://github.com/Agent-Rules-Ecosystem/flutter-agent-rules.git .agents
+git submodule add git@github.com:Agent-Rules-Ecosystem/flutter-agent-rules.git .agents
 ```
 
-### 2. Inicia el ciclo en el chat de tu Agente (Cursor, Antigravity, Claude, etc.)
+**2. Inicia el agente**
 ```text
 $boot
 ```
 
-### 3. Ejecuta tareas y registra el avance
+**3. Registra tu primera tarea**
 ```text
-$work [descripción de la tarea]
-```
-
-### 4. Cierra la sesión y sincroniza la memoria del proyecto
-```text
-$close
+$work crear pantalla de Login con Flutter y BLoC
 ```
 
 ---
@@ -89,10 +84,8 @@ overview/
 ### 1. Agregar submódulo en el proyecto Flutter
 
 ```bash
-git submodule add https://github.com/Agent-Rules-Ecosystem/flutter-agent-rules.git .agents
+git submodule add git@github.com:Agent-Rules-Ecosystem/flutter-agent-rules.git .agents
 ```
-
-
 
 ### 2. Iniciar el proyecto
 
