@@ -16,7 +16,9 @@ Cuando el usuario escribe un comando con prefijo `$`, el agente lo reconoce como
 | `$archi` | Actualizar arquitectura viva conforme a ARCHITECTURE_STANDARD.md |
 | `$learn [texto]` | Registrar aprendizaje general candidato en `overview/learning.md` |
 | `$learnagnostico [texto]` | Abstraer a términos genéricos antes de registrar |
+| `$laconico` / `$caveman` | Activar Modo Lacónico (respuesta hiper-concisa de alta densidad) |
 | `$close` | Protocolo de cierre de sesión con sincronización automática de rastreadores |
+
 
 ---
 
