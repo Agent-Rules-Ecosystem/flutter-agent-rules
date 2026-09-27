@@ -107,6 +107,17 @@ Ningún archivo de documentación, notas de negocio o tracker hallado en subdire
 2. Contexto de dominio o metadatos sueltos → extraer y relocalizar activamente a `overview/context/`.
 3. Ambiguo → referenciar en `overview/work.md` con nota `[pendiente clasificar]`.
 
+## Protocolo de Carga de Contexto en 3 Capas
+
+> **Regla de Ahorro de Tokens**: El agente **nunca** carga el directorio `overview/` completo de una vez. Sigue este orden estricto para minimizar consumo:
+
+1. **Capa 1 — Índice**: Cargar solo `overview/session.md` + `overview/work.md` (índice maestro de IDs y estados). Suficiente para responder "¿en qué estamos?".
+2. **Capa 2 — Categoría**: Si la tarea activa lo requiere, cargar el archivo de categoría correspondiente: `overview/work/tasks.md` (tarea activa) **o** `overview/work/deuda_tecnica.md` **o** `overview/work/pendientes.md`. No los tres a la vez.
+3. **Capa 3 — Nodo Específico**: Solo si el trabajo lo exige, cargar archivos de arquitectura (`overview/architecture/`) o skill reports (`overview/work/skill/`). Cargar únicamente el subdocumento del módulo o skill relevante, no toda la carpeta.
+
+> **Regla de Confianza en la Carga**: Si un archivo de `overview/` tiene campo `Confianza: baja` o `no_verificada`, el agente debe notificarlo antes de actuar sobre esa información y priorizar verificación.
+
+
 ## Handoff de Agente
 
 Cuando el Agente que retoma una sesión es distinto al que la inició (diferente modelo o proveedor):
