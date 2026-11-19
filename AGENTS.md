@@ -22,13 +22,13 @@ Antes de responder o editar, leer y cumplir:
 - Primer mensaje de conversación cuando el proyecto tiene `.agents/` pero no `overview/`.
 - Cualquier mensaje que comience con `$` → reconocer como $-comando según `core/commands.md` y ejecutar el protocolo correspondiente.
 
-Para cualquier tarea que inspeccione o cambie código del proyecto, antes de analizar o responder cargar `overview/session.md`, `overview/work.md`, `overview/work/tasks.md`, `overview/work/deuda_tecnica.md`, `overview/work/pendientes.md` y `overview/trackers/progress.md`. Es obligatorio sincronizar automáticamente de forma simultánea todos los archivos de control en `overview/` (`work.md`, `tasks.md`, `session.md`, `pendientes.md`, `deuda_tecnica.md`, `work_review.md` y `architecture.md`) durante `$work` y `$close` (Registro preventivo previo a ejecución y cierre), sin requerir recordatorios manuales del usuario. En reporte de bug incluir hipótesis breve (5-7 palabras). `overview/architecture.md` (y su estructura Hub & Spoke en `overview/architecture/`) debe registrar hasta el último rincón del proyecto (cobertura 100%); `$work` realiza el mapeo incremental de componentes afectados y `$archi` tiene como única tarea el escaneo exhaustivo y registro completo mediante diagramas sintéticos Mermaid (`graph LR` / `graph TD`) omitiendo bloques de texto redundantes. Si falta `overview/` o uno de esos archivos, crearlo desde `.agents/templates/`. Si falta `overview/architecture.md`, crearlo desde su plantilla. Al finalizar `$boot`, ejecutar el protocolo `overview/work_review.md`.
+Para cualquier tarea que inspeccione o cambie código del proyecto, cargar el estado siguiendo el **Protocolo de Carga de Contexto en 3 Capas** (`core/brain.md`): iniciar con **Capa 1** (`overview/session.md` y `overview/work.md`) y cargar **Capa 2/3** (`overview/work/tasks.md`, `overview/work/deuda_tecnica.md`, `overview/work/pendientes.md`, `overview/trackers/progress.md`, `overview/architecture/` o `overview/work/skill/`) solo según lo exija la tarea o `work_review.md`. Sincronización automática de todos los archivos de control afectados en `overview/` durante `$work` y `$close` es obligatoria. Al finalizar o resolver una tarea proveniente de `pendientes.md` o `deuda_tecnica.md`, mover físicamente la fila correspondiente a `## ✅ Completados (Historial)` y actualizar `work.md`. Si falta `overview/`, crearlo desde `.agents/templates/`. Al finalizar `$boot`, ejecutar el protocolo `overview/work_review.md`.
 
 Las reglas globales viven solo en `.agents/`. **Inviolabilidad estricta de `.agents/`**: Nunca modificar directamente archivos de gobernanza o comandos en `.agents/` desde un proyecto local. Todos los aprendizajes candidatos deben plasmarse únicamente en `overview/learning.md` bajo `## 📌 Propuestas de mejora`. Si el agente no descubre `.agents/AGENTS.md`, instalar adaptador mínimo desde `.agents/adapters/`; nunca duplicar reglas. Al editar este repositorio oficial directamente, usar rutas locales equivalentes (`core/`, `templates/`, etc.).
 
 ## Estado local versionado
 
-Crear `overview/` desde `.agents/templates/` al iniciar proyecto. Al inicio y cierre, cargar/actualizar automáticamente de forma simultánea todos los rastreadores:
+Crear `overview/` desde `.agents/templates/` al iniciar proyecto. Cargar bajo demanda según el Protocolo de 3 Capas (`core/brain.md`) y sincronizar automáticamente los archivos afectados al cerrar:
 
 - `overview/session.md`
 - `overview/work.md` (índice maestro)
@@ -36,9 +36,10 @@ Crear `overview/` desde `.agents/templates/` al iniciar proyecto. Al inicio y ci
 - `overview/work/pendientes.md` (seguimiento al cerrar)
 - `overview/work/deuda_tecnica.md` (deuda ordenada por prioridad Alta, Media y Baja)
 - `overview/work_review.md` (protocolo de auditoría `$boot`)
+- `overview/commands_project.md` (catálogo sincronizado de `$-comandos` del proyecto)
 - `overview/workflows/` (guías por flujo con terminología 100% agnóstica)
 - `overview/trackers/progress.md`
-- `overview/trackers/architecture.md` cuando aplique (actualizable vía `$archi` con diagramas Mermaid)
+- `overview/architecture.md` y `overview/architecture/` cuando aplique (actualizable vía `$archi` con diagramas Mermaid)
 - `overview/context/` para archivos de contexto general no mapeables
 - `overview/learning.md` cuando surja mejora candidata (propuestas al core)
 

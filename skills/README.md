@@ -1,6 +1,6 @@
 # Skills Oficiales para Flutter Core (`flutter-agent-rules`)
 
-Este directorio contiene e índice las habilidades técnicas inyectables (`*-agent-skill`) compatibles con `flutter-agent-rules`.
+Este directorio contiene e indexa las habilidades técnicas inyectables (`*-agent-skill`) compatibles con `flutter-agent-rules`.
 
 ## Skills Oficiales Registradas
 
@@ -12,5 +12,5 @@ Este directorio contiene e índice las habilidades técnicas inyectables (`*-age
 ## Instalación de Skills de Proyecto
 
 ```bash
-git submodule add git@github.com:xolotl-hub/<skill-name>.git .skill/<skill-name>
+git submodule add git@github.com:Agent-Rules-Ecosystem/<skill-name>.git .skill/<skill-name>
 ```

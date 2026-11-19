@@ -7,6 +7,7 @@
 >
 > - `.agents/` → Repositorio de gobernanza de **solo lectura** para el proyecto cliente.
 > - `.skill/` → Skills instaladas como submódulos Git de **solo lectura** para el proyecto cliente.
+> - **Congelamiento de submódulos**: Mantener `*-agent-rules` y `*-agent-skill` en los commits fijados por el repositorio padre; no actualizarlos ni atenderlos localmente desde el proyecto cliente.
 >
 > **Todo flujo de aprendizaje, propuesta o mejora generada por el agente o por la ejecución de skills debe registrarse EXCLUSIVAMENTE en `overview/learning.md` del proyecto.** Nunca en `.agents/` ni en `.skill/`.
 
@@ -32,7 +33,7 @@
 **Propósito**: Registrar en `overview/learning.md` una propuesta de mejora orientada a una skill específica, **sin tocar `.skill/` ni `.agents/` bajo ninguna circunstancia**.
 
 **Protocolo**:
-1. Identificar el nombre de la skill (ej: `i18n-agent-skill`, `monitoring-agent-skill`).
+1. Identificar el nombre de la skill (ej: `i18n-agent-skill`, `monitoring-agent-skill`). **Enrutamiento por Filtro Agnóstico**: distinguir si la skill que genera el hallazgo es transversal (infraestructura, seguridad, monitoreo) o específica de framework/dominio para enrutar la propuesta al repositorio canónico correcto.
 2. Agregar en `overview/learning.md` bajo `## 📌 Propuestas de mejora` con la **convención de etiquetado obligatoria**:
    ```
    - [nombre-skill] propuesta de mejora en términos descriptivos...

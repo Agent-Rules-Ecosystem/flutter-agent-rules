@@ -13,12 +13,12 @@ overview/
 │   └── deuda_tecnica.md
 ├── architecture.md
 ├── architecture/
+├── commands_project.md
 ├── learning.md
 ├── session.md
 ├── work.md
 ├── work_review.md
 └── trackers/
-    ├── architecture.md
     ├── progress.md
     ├── content_gemini.md
     ├── content_claude.md

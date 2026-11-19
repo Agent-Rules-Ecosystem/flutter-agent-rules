@@ -1,7 +1,7 @@
 # 📏 Reglas de Importación por Nivel y Capa
 
 > Pertenece a: `overview/architecture/core/import_rules.md`  
-> Referenciado desde: [`ARCHITECTURE.md`](../../ARCHITECTURE.md)
+> Referenciado desde: [`overview/architecture.md`](../../architecture.md)
 
 ## 1. Directivas de Importación de Capas
 

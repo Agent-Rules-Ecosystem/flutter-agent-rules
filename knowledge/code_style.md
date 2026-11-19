@@ -46,6 +46,6 @@
 
 ## Nulabilidad
 
-- Activar null-safety (`dart>=2.12`). No usar `!` sin estar seguro del valor.
+- Usar sound null-safety (estándar en Dart 3+). No usar `!` sin garantía explícita de no-nulidad.
 - Preferir `??` y `?.` sobre comprobaciones `if (x != null)` verbosas.
 - Evitar `late` salvo en campos inicializados en `initState` con justificación clara.

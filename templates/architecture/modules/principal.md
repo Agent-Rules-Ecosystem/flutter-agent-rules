@@ -1,7 +1,7 @@
 # 📦 Módulo: Principal
 
 > Pertenece a: `overview/architecture/modules/principal.md`  
-> Referenciado desde: [`ARCHITECTURE.md`](../../ARCHITECTURE.md)
+> Referenciado desde: [`overview/architecture.md`](../../architecture.md)
 
 ## 1. Mapa de Enrutamiento Lógico y Flujo Operativo
 

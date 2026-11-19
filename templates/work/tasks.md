@@ -6,16 +6,16 @@
 
 - **ID:** `[wX]`
 - **Descripción:**
-- **Estado:** `activo` <!-- activo | draft | en_revision | superseded -->
+- **Estado:** `activo` <!-- activo | pendiente | en_revision | bloqueado | superseded -->
 - **Confianza:** `alta` <!-- alta | media | baja | no_verificada -->
-- **Agente:** `[Modelo / Firma]`
+- **Agente:** `[Proveedor Modelo — YYYY-MM-DD]`
 - **Fecha inicio:** `YYYY-MM-DD`
 
 ## 🏷️ Clasificación
 
-- [ ] **Problema** (comportamiento inesperado o falla)
-- [ ] **Mejora** (optimización o evolución funcional)
-- [ ] **Refactor** (reestructuración sin cambio de comportamiento)
+- [ ] **Problema (Bug):** Comportamiento inesperado o fallo funcional.
+- [ ] **Mejora (Feature):** Nueva capacidad o refactor de valor.
+- [ ] **Deuda / Refactor:** Limpieza de código o estructuración técnica.
 
 ## 🛤️ Rutas de Trabajo y Posibles Soluciones
 
@@ -30,3 +30,4 @@
 -
 
 > **Regla de Ciclo de Vida**: Al completar la tarea, cambiar `estado` a `superseded` y mover a `## ✅ Completados (Historial)` en `work.md`. Si una hipótesis es invalidada, marcar `confianza: no_verificada` antes de intentar la siguiente opción.
+

@@ -19,12 +19,12 @@ description: Rules for Flutter modularization, Clean Architecture, file line lim
 
 ## 3. Interfaces Adaptativas y Compactas
 - Para soporte de pantallas pequeñas (ej. dispositivos portátiles/industriales):
-  - Detectar tamaño compacto via `MediaQuery.of(context).size`.
+  - Detectar tamaño compacto via `MediaQuery.sizeOf(context)`.
   - Definir bandera `final isCompact = height < 700 || width < 380;`.
   - Ajustar padding, fuentes y disposición de botones según `isCompact`.
 
 ## 4. Manejo de Estado (Riverpod)
-- Separar la vista (Widget) del controlador (Notifier/StateNotifier).
+- Separar la vista (Widget) del controlador (Notifier/Notifier / AsyncNotifier).
 - Prevenir lógica de negocio o llamados Firebase dentro de los métodos `build()` de los widgets.
 
 ## 5. Validación y Release

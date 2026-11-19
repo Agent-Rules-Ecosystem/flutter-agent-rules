@@ -30,4 +30,4 @@
 
 | ID | Ubicación / Componente | Descripción de la Deuda | Solución Aplicada | Agente | Fecha | Estado |
 |---|---|---|---|---|---|---|
-| d1 | | | | [Modelo vX] | YYYY-MM-DD | `superseded` |
+| d1 | | | | [Proveedor Modelo — YYYY-MM-DD] | YYYY-MM-DD | `superseded` |

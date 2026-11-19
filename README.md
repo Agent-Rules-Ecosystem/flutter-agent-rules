@@ -27,7 +27,7 @@ $work crear pantalla de Login con Flutter y BLoC
 
 ## 📌 Pilares de Gobernanza
 
-1. **⚡ Modo Cavernícola & Token Saver**: Respuestas ultra-concisas, eliminación de prosa innecesaria y referencias de líneas en lugar de duplicación de código en chat.
+1. **⚡ Modo Lacónico & Token Saver**: Respuestas ultra-concisas, eliminación de prosa innecesaria y referencias de líneas en lugar de duplicación de código en chat.
 2. **🔄 Sincronización Automática de Rastreadores**: Actualización simultánea e integral de los 7 archivos de control en `overview/` (`session.md`, `work.md`, `tasks.md`, `pendientes.md`, `deuda_tecnica.md`, `work_review.md` y `architecture.md`) durante `$work` y `$close`, sin requerir recordatorio manual del usuario.
 3. **🗺️ Arquitectura Viva (`$archi`)**: Mantenimiento incremental del mapa técnico en `overview/architecture.md` mediante **diagramas sintéticos Mermaid** (`graph LR` / `graph TD`) sin texto redundante, para lectura rápida y rastreo de conexiones.
 4. **👥 Handoff y Memoria Versionada por Agente**: Firma canónica por proveedor/modelo (`[Proveedor] [Modelo] — YYYY-MM-DD`). Historial incremental de solución de bugs y traspaso transparente al cambiar de agente.
@@ -48,6 +48,10 @@ Los $-comandos son atajos explícitos que ejecutan protocolos inmediatos en el p
 | `$archi` | **Arquitectura** | Escanea cambios estructurales de la sesión y actualiza **diagramas Mermaid sintéticos** (sin texto redundante) y capas en `architecture.md`. |
 | `$learn [texto]` | **Aprendizaje** | Valida con Filtro Agnóstico y registra propuesta de mejora candidata en `overview/learning.md`. |
 | `$learnagnostico [texto]` | **Abstracción** | Descontextualiza entidades de negocio a términos agnósticos y las registra en `overview/learning.md`. |
+| `$learnskill [skill] [texto]` | **Skill** | Registra una mejora candidata para una skill específica en `overview/learning.md` con etiqueta `[skill]`. |
+| `$revlearnskill` | **Auditoría Skill** | Audita `overview/learning.md` y evalúa mejoras candidatas para la skill indicada. |
+| `$laconico` | **Comunicación** | Activa o refuerza el Modo Lacónico (por defecto) en `overview/session.md`. |
+| `$modo:detallado` | **Comunicación** | Habilita temporalmente explicaciones técnicas paso a paso sin clichés. |
 | `$close` | **Cierre** | Cierre de sesión, validación de calidad/tests, registro de pendientes y sincronización final de rastreadores. |
 | `ejecuta .agents` | **Auditoría** | Dispara el bootstrap completo más la Evaluación de 3 Vías de `overview/learning.md`. |
 
@@ -69,8 +73,7 @@ overview/
 │   ├── pendientes.md      # Seguimiento de tareas identificadas al cerrar ($close)
 │   └── deuda_tecnica.md   # Deuda clasificada por prioridad (Alta, Media, Baja)
 ├── trackers/
-│   ├── progress.md        # Progreso general por nodos de avance
-│   └── architecture.md    # Registro incremental de nodos de arquitectura
+│   └── progress.md        # Progreso general por nodos de avance
 ├── context/               # Datos de dominio, changelogs y metadatos no mapeables
 ├── workflows/             # Guías de dominio agnósticas (ej. Origen → Procesamiento → Destino)
 ├── learning.md            # Propuestas de mejora candidatas al core

@@ -4,11 +4,12 @@
 
 ## 📌 Lista de Pendientes
 
-| ID | Fecha detección | Origen / Contexto | Descripción | Estado |
-|---|---|---|---|---|
-| p1 | YYYY-MM-DD | `$close` / sesión | | `pendiente` |
+| ID | Fecha detección | Origen / Contexto | Descripción | Confianza | Estado |
+|---|---|---|---|---|---|
+| p1 | YYYY-MM-DD | `$close` / sesión | | `alta` | `pendiente` |
 
-- **Estados:** `pendiente`, `en progreso`, `promovido_a_task`, `descartado`, `hecho`.
+- **Estados:** `activo | pendiente | en_revision | bloqueado | superseded`.
+- **Confianza:** `alta | media | baja | no_verificada`.
 
 ---
 
@@ -18,4 +19,4 @@
 
 | ID | Fecha Resolución | Origen / Contexto | Descripción / Solución | Agente |
 |---|---|---|---|---|
-| p1 | YYYY-MM-DD | `$close` / sesión | | [Modelo vX] |
+| p1 | YYYY-MM-DD | `$close` / sesión | | [Proveedor Modelo — YYYY-MM-DD] |

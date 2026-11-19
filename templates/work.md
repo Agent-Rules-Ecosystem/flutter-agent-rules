@@ -2,11 +2,13 @@
 
 > **Backlog canónico único.** Concentra los IDs de `tarea`, `bug` y `deuda`. El detalle se distribuye en `overview/work/tasks.md` (tarea activa), `overview/work/pendientes.md` (seguimiento) y `overview/work/deuda_tecnica.md` (deuda ordenada por prioridad Alta/Media/Baja).
 
-| ID | Tipo | Estado | Resumen | Archivo de Detalle |
-|---|---|---|---|---|
-| w1 | tarea | pendiente | | `work/tasks.md` |
+| ID | Tipo | Estado | Confianza | Resumen | Archivo de Detalle |
+|---|---|---|---|---|---|
+| w1 | tarea | `pendiente` | `alta` | | `work/tasks.md` |
 
-Tipos: `tarea`, `bug`, `deuda`. Estados: `pendiente`, `en progreso`, `bloqueado`, `hecho`, `no verificado`.
+Tipos: `tarea`, `bug`, `deuda`.  
+Estados: `activo | pendiente | en_revision | bloqueado | superseded`.  
+Confianza: `alta | media | baja | no_verificada`.
 
 ---
 
@@ -16,7 +18,7 @@ Tipos: `tarea`, `bug`, `deuda`. Estados: `pendiente`, `en progreso`, `bloqueado`
 
 | ID | Tipo | Resuelto por (Agente) | Causa Raíz / Resumen Solución | Fecha |
 |---|---|---|---|---|
-| [ID] | tarea/bug/deuda | [Modelo vX] | [Resumen breve de la solución aplicada] | YYYY-MM-DD |
+| [ID] | tarea/bug/deuda | [Proveedor Modelo — YYYY-MM-DD] | [Resumen breve de la solución aplicada] | YYYY-MM-DD |
 
 ---
 
@@ -27,9 +29,9 @@ Tipos: `tarea`, `bug`, `deuda`. Estados: `pendiente`, `en progreso`, `bloqueado`
 
 | Fecha | Agente | Intento | Resultado |
 |---|---|---|---|
-| YYYY-MM-DD | Modelo vX | Descripción del intento | fallido / parcial / exitoso |
+| YYYY-MM-DD | [Proveedor Modelo — YYYY-MM-DD] | Descripción del intento | fallido / parcial / exitoso |
 
-**✅ Resuelto por:** Agente (Modelo vX) — YYYY-MM-DD
+**✅ Resuelto por:** [Proveedor Modelo — YYYY-MM-DD]
 - **Causa raíz:** …
 - **Solución aplicada:** …
 

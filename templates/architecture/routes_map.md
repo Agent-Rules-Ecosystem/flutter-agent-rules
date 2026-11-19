@@ -1,7 +1,7 @@
 # 🧭 Mapa Global de Rutas y Navegación
 
 > Pertenece a: `overview/architecture/routes_map.md`  
-> Referenciado desde: [`ARCHITECTURE.md`](../../ARCHITECTURE.md)
+> Referenciado desde: [`overview/architecture.md`](../architecture.md)
 
 ## 1. Diagrama Sintético de Enrutamiento
 

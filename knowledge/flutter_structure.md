@@ -2,7 +2,7 @@
 
 Este documento especifica la estructura de carpetas y archivos nativos estándar reconocidos en un proyecto Flutter. Durante el protocolo de discovery, cualquier carpeta raíz fuera de esta lista es identificada como **no-estándar** y debe ser procesada mediante inspección semántica recursiva para relocalizar su contenido en `overview/`.
 
-## Directores Estándar del Framework Flutter
+## Directorios Estándar del Framework Flutter
 
 | Directorio | Propósito | Tratamiento |
 |---|---|---|
@@ -22,6 +22,7 @@ Este documento especifica la estructura de carpetas y archivos nativos estándar
 | `.vscode/` | Configuración IDE Visual Studio Code | Ignorar en discovery |
 | `.git/` | Repositorio y metadata Git | Ignorar en discovery |
 | `.agents/` | Submódulo oficial de reglas compartidas | Conservar en root |
+| `.skill/` | Submódulos de skills independientes del proyecto | Conservar en root |
 | `overview/` | Estado local versionado del proyecto | Conservar en root |
 
 ## Archivos Estándar en Root

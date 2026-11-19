@@ -1,7 +1,7 @@
 # 🔄 Flujo de Datos Global y Persistencia
 
 > Pertenece a: `overview/architecture/core/data_flow.md`  
-> Referenciado desde: [`ARCHITECTURE.md`](../../ARCHITECTURE.md)
+> Referenciado desde: [`overview/architecture.md`](../../architecture.md)
 
 ## 1. Arquitectura de Estado y Persistencia Local-First
 

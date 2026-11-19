@@ -10,7 +10,7 @@ graph TD
     C --> E[Discovery de proyecto]
     D --> E
     E --> F[Trabajar]
-    F --> M{Autocheck modo cavernicola}
+    F --> M{Autocheck Modo Lacónico}
     M -- Falla --> R[Reescribir respuesta]
     R --> G[Validar]
     M -- OK --> G
@@ -44,16 +44,16 @@ Cuando el usuario escribe **"ejecuta .agents"** (o variante como "corre .agents"
 
 ## Inicio
 
-- Ejecutar `git submodule status`.
-- Leer core y `overview/session.md`, `overview/work.md`, `overview/work/tasks.md`, `overview/work/deuda_tecnica.md`, `overview/work/pendientes.md`, `overview/trackers/progress.md` y reportes de skills en `overview/work/skill/`.
+- Verificar `.git/` (si falta en un proyecto nuevo/ZIP, ejecutar `git init` antes de agregar submódulos) y ejecutar `git submodule status`.
+- Leer core y aplicar el **Protocolo de Carga de Contexto en 3 Capas**: cargar inicialmente **Capa 1** (`overview/session.md`, `overview/work.md`), y luego **Capa 2/3** (`tasks.md`, `pendientes.md`, `deuda_tecnica.md`, `trackers/progress.md`, `overview/work/skill/`) solo según la tarea activa y el paso `work_review.md`.
 - Si falta `overview/` o archivos base, crearlos desde `.agents/templates/`.
 - Si falta `overview/architecture.md`, crearlo desde plantilla antes de trabajar.
 - **Orden de prioridad de atención en `$work`**: 
   1. `overview/work/tasks.md` (tarea activa en ejecución)
   2. `overview/work/pendientes.md` (ítems de seguimiento identificados)
   3. `overview/work/deuda_tecnica.md` (deuda ordenada por prioridad **Alta**, **Media** y **Baja**)
-- **Histórico de completados**: Al resolver cualquier ítem (tarea, bug o deuda), retirarlo inmediatamente de las tablas activas y trasladarlo a la sección `## ✅ Completados (Historial)` en `work.md`, `deuda_tecnica.md` y `pendientes.md` conservando su ID (`[w1]`, `[d2]`, `[p1]`).
-- **Alias divergentes en bootstrap**: si coexisten pares alias/canónico (`tasks.md`/`work.md`, `tracker.md`/`trackers/architecture.md`, `memory_session.md`/`session.md`) con contenido distinto → flag obligatorio `[consolidar alias]` en `work.md`; **nunca** asumir cuál manda sin verificar diff previo.
+- **Histórico de completados (traslado físico inmediato)**: Al resolver cualquier ítem (tarea, bug o deuda) proveniente de `work/tasks.md`, `work/pendientes.md` o `work/deuda_tecnica.md`, retirar inmediatamente la fila de la tabla activa y moverla físicamente a `## ✅ Completados (Historial)` en `work.md`, `deuda_tecnica.md` y `pendientes.md` conservando su ID (`[w1]`, `[d2]`, `[p1]`).
+- **Alias divergentes en bootstrap**: si coexisten pares alias/canónico (`tasks.md`/`work.md`, `tracker.md`/`trackers/progress.md`, `memory_session.md`/`session.md`) con contenido distinto → flag obligatorio `[consolidar alias]` en `work.md`; **nunca** asumir cuál manda sin verificar diff previo.
 - **`session.md` legado vs plantilla**: si faltan campos o encabezados requeridos (`Agente:`, `## Reanudar`, `## Cambios`) → reportar en boot `session legado` sin forzar migración automática implícita.
 - **Auditoría de líneas (discovery/`$boot`)**: listar archivos de código fuente >250L; sugerir IDs `deuda` en `overview/work/deuda_tecnica.md` ordenadas por prioridad (**Alta**, **Media**, **Baja**); no crear filas fijas sin confirmación implícita de la tarea.
 - **Registro preventivo previo a ejecución (Pre-execution Work Logging)**: Al recibir un requerimiento o bug, actualizar de forma automática y simultánea los archivos de control de `overview/` (`work.md`, `work/tasks.md`, `session.md`, `pendientes.md`, `deuda_tecnica.md`, `work_review.md` y `architecture.md`) INMEDIATAMENTE antes de ejecutar cualquier acción, sin requerir recordatorio manual del usuario. En `tasks.md`, describir la tarea a iniciar, clasificarla (`problema`, `mejora`, `refactor`) y proponer hipótesis/soluciones o rutas de trabajo. En caso de reporte de bug, incluir una hipótesis breve de causa raíz (5-7 palabras). Derivar automáticamente 1 o 2 mejoras/tareas asociadas a los pendientes para garantizar tolerancia a desconexión, corte de luz o agotamiento de tokens.
@@ -63,7 +63,7 @@ Cuando el usuario escribe **"ejecuta .agents"** (o variante como "corre .agents"
 - **Historial de Intentos firmado por Agente**: En `work.md` y trackers de bugs/tareas, mantener un registro incremental de intentos de resolución. Nunca borrar intentos previos. Reglas:
   - **Mismo día:** actualizar la entrada existente de esa fecha (sin duplicar).
   - **Diferente día:** crear nueva entrada con fecha + **firma del Agente** (modelo/versión) que ejecutó la prueba.
-  - **Al resolver:** marcar estado como `hecho` indicando el Agente que logró la solución. Incluir nota concisa con (1) causa raíz exacta y (2) solución aplicada (código/configuración).
+  - **Al resolver:** marcar estado como `superseded` y mover físicamente la fila a `## ✅ Completados (Historial)` indicando el Agente que logró la solución. Incluir nota concisa con (1) causa raíz exacta y (2) solución aplicada (código/configuración).
   - **Propósito:** ante problema similar futuro, consultar historial para reusar la solución exitosa o recomendar al agente que la resolvió.
 
 ### Discovery dinámico por framework
@@ -116,6 +116,13 @@ Ningún archivo de documentación, notas de negocio o tracker hallado en subdire
 3. **Capa 3 — Nodo Específico**: Solo si el trabajo lo exige, cargar archivos de arquitectura (`overview/architecture/`) o skill reports (`overview/work/skill/`). Cargar únicamente el subdocumento del módulo o skill relevante, no toda la carpeta.
 
 > **Regla de Confianza en la Carga**: Si un archivo de `overview/` tiene campo `Confianza: baja` o `no_verificada`, el agente debe notificarlo antes de actuar sobre esa información y priorizar verificación.
+>
+> **Principio *Overview-First* y Consulta $O(1)$**: Leer primero los índices/trackers en `overview/` antes de abrir archivos hermanos de código o documentación. Ante preguntas de avance o estado de archivos/ítems, consultar exclusivamente `overview/trackers/progress.md` (o tracker equivalente) en $O(1)$, prohibiendo escaneos especulativos de carpetas.
+
+## Jurisdicción de `overview/` y Selección Contextual de Reglas
+
+- **Localidad Horizontal**: `overview/` tiene jurisdicción exclusiva sobre sus directorios hermanos (mismo directorio padre); el agente nunca aplica reglas de un `overview/` local a carpetas por encima de su nivel.
+- **Selección Contextual de Reglas y Reporte de Omisiones**: Al iniciar o auditar una tarea, identificar explícitamente qué reglas y checklists aplican según el tipo de cambio. Toda comprobación no ejecutable debe reportarse como **omitida** indicando el motivo; nunca contarla como aprobada.
 
 
 ## Handoff de Agente
@@ -126,7 +133,7 @@ Cuando el Agente que retoma una sesión es distinto al que la inició (diferente
 2. **Validar estado previo**: leer `## Reanudar` de `session.md` y verificar que el `Contexto crítico` es coherente con el estado actual de los archivos mencionados. Si hay inconsistencia, anotar en `work.md` antes de continuar.
 3. **No asumir correctitud**: el Agente entrante no da por válido el trabajo del anterior sin verificación. Inspeccionar el último cambio registrado en `## Cambios` y confirmar que el archivo/función afectado existe y compila.
 4. **Registrar handoff**: al comenzar a trabajar, actualizar `session.md`:
-   - `Agente que reanuda:` con la firma propia (formato `core/communication.md §3`).
+   - `Agente que reanuda:` con la firma propia (formato `core/communication.md §4`).
    - Añadir bullet en `## Cambios`: `- Handoff de [Agente anterior] → [Agente actual].`
 5. **Historial de intentos**: si hay bugs abiertos en `work.md`, revisar el historial de intentos antes de proponer solución — el agente anterior puede haber intentado el mismo enfoque.
 
@@ -134,9 +141,9 @@ Cuando el Agente que retoma una sesión es distinto al que la inició (diferente
 
 ## Arquitectura viva y Mapeo Incremental por Tarea
 
-- **Arquitectura viva en `overview/architecture.md`**: El proyecto debe mantener un mapa operativo completo y exhaustivo de hasta el último rincón del repositorio (pantallas, clases, widgets, services, providers, repos y modelos). Debe plasmarse mediante diagramas sintéticos Mermaid (`graph LR` / `graph TD`) y tablas de conexiones clave, omitiendo bloques de texto redundantes para permitir rápida lectura y fácil rastreo de conexiones del agente.
+- **Arquitectura viva Hub & Spoke (`overview/architecture.md` + `overview/architecture/`)**: `overview/architecture.md` es el índice raíz sintético (`< 200L`) con diagrama macro Mermaid y enlaces a subdocumentos modulares en `overview/architecture/` (`ARCHITECTURE_STANDARD.md`).
 - **Mapeo incremental de arquitectura por `$work`**: Al registrar o iniciar una tarea, el agente debe actualizar `overview/architecture.md` mapeando incrementalmente los nodos y conexiones que dicha tarea toca o modifica, asegurando que el mapa evolucione sin perder detalle.
-- **Comando y Trigger `$archi` (Exhaustividad de Arquitectura Viva)**: Comando dedicado exclusivamente a auditar, escanear y registrar hasta el último rincón del proyecto en `overview/architecture.md`. Si el mapeo en `$work` no cubrió la totalidad de los componentes modificados o nuevos, `$archi` debe ejecutar el escaneo estructural completo para garantizar cobertura del 100% de la arquitectura viva mediante diagramas Mermaid sintéticos.
+- **Comando y Trigger `$archi` (Exhaustividad Hub & Spoke)**: Audita y actualiza el índice raíz `overview/architecture.md` (`< 200L`) y los subdocumentos en `overview/architecture/` (`routes_map.md`, `core/`, `modules/`) garantizando cobertura 100% con diagramas Mermaid sintéticos.
 - **Modularización de Trackers por Subcarpetas / Archivo Individual**: Para colecciones masivas de datos, los trackers de contenido deben modularizarse en directorios (`overview/trackers/content/<categoria>/<item>.md`) y el contenido verificado mapearse directamente a la estructura final en app.
 
 ## Cierre
