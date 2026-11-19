@@ -34,7 +34,7 @@
 | Tarea Activa | `overview/work/tasks.md` | Inicio/en ejecución |
 | Pendientes | `overview/work/pendientes.md` | Cierre/bajo demanda |
 | Deuda Técnica | `overview/work/deuda_tecnica.md` | Inicio/bajo demanda |
-| Protocolo Revisión Work | `overview/work_review.md` | Fin de `$boot` |
+| Reporte mutable Revisión Work | `overview/work_review.md` | Fin de `$boot` |
 | Aprendizajes | `overview/learning.md` | Al cerrar |
 | Comandos del proyecto | `overview/commands_project.md` | `$boot` |
 | Salud de Skills | `overview/work/skill/` | `$boot` / Auditoría |
