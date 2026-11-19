@@ -1,12 +1,13 @@
 # ⚡ Comandos Disponibles en Este Proyecto
 
 > **Generado automáticamente durante `$boot`.**
-> Este archivo es una **copia de referencia** — no editar manualmente.
+> Este archivo es una **copia de referencia** — regenerar solo dentro de los bloques delimitados `CORE`/`SKILLS`; los comandos propios van fuera de ellos.
 > Fuente de verdad: `.agents/core/commands.md` y `.skill/[nombre-skill]/core/commands.md`.
 
 ---
 
 ## 🧠 Comandos del Core (`.agents/`)
+<!-- CORE_START -->
 
 | Comando | Acción |
 |---|---|
@@ -22,8 +23,14 @@
 | `$modo:detallado` | Activar explicaciones técnicas paso a paso sin relleno |
 | `$close` | Protocolo de cierre de sesión con sincronización de rastreadores |
 
+<!-- CORE_END -->
+
 ---
 
 <!-- SKILLS_START -->
 <!-- Las secciones de skills se agregan automáticamente durante $boot si hay submódulos en .skill/ -->
 <!-- SKILLS_END -->
+
+## 🛠️ Comandos propios del proyecto
+
+<!-- Preservado en cada $boot: no se sobrescribe -->
